@@ -1,0 +1,25 @@
+{
+    "builds": [
+      {
+        "src": "backend/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb" }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "backend/wsgi.py"
+      }
+    ],
+    "build": {
+      "env": {
+        "DJANGO_SETTINGS_MODULE": "backend.settings",
+        "PYTHONUNBUFFERED": "1"
+      },
+      "scripts": {
+        "build": "./build_files.sh"
+      }
+    }
+  }
+  
